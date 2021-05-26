@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <title>Search Vaccine Slot</title>
+</head>
+<body>
+  
+<nav class="navbar navbar-light bg-dark">
+
+    <form class="form-inline">
+        <i class="bi bi-search"></i>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+         </svg>
+     
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form>
+  </div>
+</nav> 
+<br>
+<div class="card" id="topcard">
+  <img class="card-img-top" src="covid3.png" alt="Card image cap">
+  <div class="card-img-overlay text-white">
+    <h2 class="card-title "> Search Your Slot </h2>
+  </div>
+</div>
+
+<br><br><br><br>
+<div class="card-deck">
+  <div class="card">
+    <img class="card-img-top" src="covid1.jpeg" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Vaccine info </h5>
+      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+  <div class="card">
+    <img class="card-img-top" src="covid1.jpeg" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title"> Symptoms </h5>
+      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+  <div class="card">
+    <img class="card-img-top" src="covid1.jpeg" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Deal the symptoms </h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+</div>
+<div class="bg-dark text-white">
+<p>Hello</p>
+</div>
+
+</body>
+</html>
