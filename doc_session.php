@@ -11,7 +11,7 @@
         $doc_session = $row['name'];
         
         if(!isset($_SESSION['login_user'])){
-                header("location:login.php");
+                header("location:doc_login.php");
                 die();
         }
 ?>
