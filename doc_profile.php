@@ -27,41 +27,50 @@
       ?>
 
    <!--FORM TO SEARCH PATIENT USING NAME OR PHONE NO. -->
-      <form method="post" action=" ">
+      <form method="post" action="/DBMS lab/doc_profile.php">
          Search Patient : <br>
          <input type="text" name="searchvalue" placeholder="Search by name or Phone number">
          <input type="submit" name="Search" value="Search Patient"><br><br>
       </form>
 
       <?php
+      
+      
+         function search($sv){
 
-       
-      //php code to search the value 
-   
-      //if search button pressed
-        if($_POST["Search"]){
+            require("dbconn.php");
+            //value will get searched even with similarities
+            $sql="SELECT * from patients WHERE name like '%$sv%' OR phno = '$sv'";
+            $result =mysqli_query($connect,$sql);
+
+            while($row=$result->fetch_assoc()){
+            
+               //save the name so that the reports are added to this name only
+               
+              if($row > 0){
+  
+                 //get the age
+                 $age = age($row['dob']);
+  
+                 echo "<form action='add_report.php' method='get'> <b>Name of patient :  </b>".$row['name']."<br><b>Phone no: </b>".$row['phno']."<br><b>Gender: </b>".$row['gender']."<br><b>Age : </b>".$age."<br><br>
+                 <input value=".$row['id']." name='id' style='display:none;'>
+                 <input value=".$row['name']." name='name' style='display:none;'>
+                 <input type='submit' name='Add' value='Add Report'><br><br></form>";
+           
+
+         }
+      }
+   }
+
+
+         function age($dob){
+            $diff = (date('Y')-date('Y',strtotime($dob)));
+            return $diff;
+         }
 
          $search_value = $_POST["searchvalue"];
-
-         //value will get searched even with similarities
-         $sql="SELECT * from patients WHERE name like '%$search_value%' OR phno like '%$search_value%'";
-         $result =mysqli_query($connect,$sql);
-
-         while($row=$result->fetch_assoc()){
-            
-             //save the name so that the reports are added to this name only
-            $_SESSION["pname"] = $row["name"];
-
-            //get the age
-            $dob = $row["dob"];
-            $diff = (date('Y')-date('Y',strtotime($dob)));
-
-            echo '<b>Name of patient :  </b>'.$row["name"]."<br><b>Phone no: </b>".$row["phno"]."<br><b>Gender: </b>".$row["gender"]."<br><b>Age : </b>".$diff."<br><br>";
-
-            echo "<a href= add_report.php>Add Report</a><br><br>";
-            
-         } 
-      }      
+         search($search_value);
+       
       ?>
 
       <a href = "doc_logout.php">Log Out</a>
