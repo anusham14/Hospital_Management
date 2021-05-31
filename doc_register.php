@@ -88,7 +88,7 @@
             <img src="doc_reg.jpg" height= "800px" width="100%"> 
             <div class="card-img-overlay text-dark" style="text-align:center;" id="ext_reg">
                 <h2 class="card-body" style="margin-top:2%;">DOCTOR REGISTRATION</h2> 
-                <h5>Already registered?<a href="doc_login.php"> Login </a> here.<br></h5>
+                <!--<h5>Already registered?<a href="doc_login.php"> Login </a> here.<br></h5>-->
                 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" id="doc_reg">
                 
                     <tr>

@@ -19,15 +19,6 @@
       
       echo "Patient name : ".$row[0]."<br>Phone no : ".$row[1]. "<br>Gender : " .$row[2]."<br>Date of birth : ".$row[3]."<br><br>";
       
-      /*echo "<form action='get_apt.php' method='get'>
-      <b>Name of patient :  </b>".$row['name'].
-      "<br><b>Phone no: </b>".$row['phno'].
-      "<br><b>Gender: </b>".$row['gender'].
-      "<br><b>Date of birth : </b>".$row['dob']."<br><br>
-      <input value=".$row['id']." name='id' style='display:none;'>
-      <input value=".$row['name']." name='name' style='display:none;'>
-      <input type='submit' name='Get' value='Get Appointment'><br><br></form>";*/
-
    ?>
       <form method="post" action="/DBMS lab/patient_profile.php">
             <h2>Search appointment availability : </h2><br>
@@ -51,32 +42,37 @@
       </form>
    
    <?php
+
    if($_POST['searchApt']){
       $spec = $_POST['sp'];
       //$apt_date = $_POST['aptDate'];
     
       $sql = "SELECT * FROM doctors WHERE sp = '$spec'";
-      $result = mysqli_query($connect,$sql);
+      $doclist = mysqli_query($connect,$sql);
       
-      while($rows = mysqli_fetch_array($result)){
-         echo "Doctor name : ".$rows['name']."<br>";
-         echo "<form action='' method='get'><input type='date' name='selectDate' value= 'Check availability'></form>"
+      while($docs = mysqli_fetch_array($doclist)){
+         echo "Doctor name : ".$docs['name']."<br>";
+         echo "<form action='get_apt.php' method='get'><input type='date' name='selectDate' value= 'Check availability'>
+         <input value=".$docs['id']." name='id' style='display:none;'><input value=".$docs['name']." name='name' style='display:none;'><input type = 'submit' name='book' value='Check Appointments' id='check'> </form>";
       }
+   }
 
-      //$sql = "SELECT apt_id,doc_id,doc_sp,doc_name,fees,pname,COUNT(date_of_apt) as apt_nos FROM appointments WHERE 
-      /*$sql = "SELECT doc_id,doc_name,doc_sp,fees,COUNT(date_of_apt) as apt_nos FROM appointments apt INNER JOIN doctors doc ON apt.doc_id = doc.id WHERE date_of_apt = '$apt_date'";
-      $result = mysqli_query($connect,$sql);
-      $rows = mysqli_fetch_array($result);
-      
-      $availability = 5-$rows[4];
-      if($availability>0){
-          //echo "Doctor ID : ".$rows[0]."<br>Doctor name : ".$rows[1]."<br>Fees : ".$rows[2]."<br>Avaibilities : ".$availability."<br>";
-          echo "<form action='book_apt.php' method='get'> <b>Doctor ID : </b>".$rows[0]."<br><b>Doctor name : </b>".$rows[1]."<br><b>Fees : </b>".$rows[3]."<br><b>Avaibilities : </b>".$availability."<br><br>
-          <input type='submit' name='Book' value='Book Appointment'><br><br></form>";*/
+   function checkApts($docid, $aptDate){
+
+      //find diff using func
+
+      $newDate = date("Y-m-d", strtotime($aptDate));
+      $aptList = mysqli_query($connect,"SELECT * FROM appointments as ap WHERE ap.doc_id = '$docid'  and ap.date_of_apt - '$newDate' = 0");
+
+      $count = mysqli_num_rows($aptList);
+
+      if($count >= 5){
+         echo '<script>document.getElementById("book").disabled = true;</script>';
       }
       else{
-          echo "Sorry no available appointments for the date you're looking for select some different date!";
+         echo '<script>document.getElementById("book").disabled = false;</script>';
       }
+   }
       
    ?>
 
