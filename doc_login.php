@@ -1,41 +1,58 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link
-            rel="stylesheet"
-            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-            crossorigin="anonymous"
-        />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
 
+    <title>Hospital Management System </title>
     <style>
-        #ext_log{
-                padding: 10%;
-            }
-        #doc_log{
-            background-color: rgba(0, 0, 0, 0.4);
-            border-radius : 20px;
-            padding: 5%;
-            width: 60%;
-            height :100%;
-            margin-left:20%;
-            color : white;
+
+        #login{
+            width : 30%;
+            height : 70%;
+            margin : 10%;
+            background-image : linear-gradient(180deg, rgb(22, 29, 48), rgb(24, 54, 49));
+            border-radius : 10px;
+        
+        }
+
+        .txt-field{
+            background :rgba(74, 77, 76, 0.616);
+            margin-top : 5px;
+            border-radius : 5px;
+           
         }
     </style>
-    
-   <nav class="navbar navbar-dark" style="background-color: white;">
-            <div class="container-fluid">
-                <a class="navbar-brand">APOLO HOSPITAL</a>
-            </div>
-        </nav>
 
 </head>
-    <body>
-    <img src="doc_login.jpg" height= "800px" width="100%">
-    <div class="card-img-overlay text-dark" style="text-align:center;" id="ext_log">
-    <h2 > DOCTOR LOGIN  </h2>
+<body>
+    
+    <nav class="navbar navbar-light" style="background-color: white;">
+         <div class="container-fluid">
+         <a class="navbar-brand">APOLO HOSPITAL</a>
+         <ul class="nav nav-pills">
+                <li class="active">
+                    <form method="get" action="home.php">
+                    <button type="submit" class="btn btn-outline-primary" id="dbt" name="dbt">Back</button>
+                    </form>
+                </li>
+                
+            </ul>
+        </div>
+    </nav> 
+
+
+    <img src="form.png" height= "100%" width="100%">
+    <div class="card-img-overlay text-light" id="login">
+    <br><br>
+    <h2 style="text-align:center;"> DOCTOR LOGIN  </h2><br>
         <form method="post" action="" style="text-align:center;" id="doc_log">
                 <tr>
                 <td>Name &emsp;&emsp;&emsp;&emsp;: </td>

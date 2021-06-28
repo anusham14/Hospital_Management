@@ -68,6 +68,8 @@
 
                 require("dbconn.php");
 
+                //display list of patients
+
                 $sel = mysqli_query($connect,"SELECT id,name,phno,dob,gender FROM patients");
                 echo "<table id='disp'>";
                 while($res = mysqli_fetch_array($sel)){

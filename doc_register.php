@@ -24,9 +24,12 @@
         </style>
     </head>
     <body>
-        <nav class="navbar navbar-dark" style="background-color: white;">
+        <nav class="navbar navbar-light" style="background-color: white;">
             <div class="container-fluid">
                 <a class="navbar-brand">APOLO HOSPITAL</a>
+                <form method="get" action="admin_panel.php">
+                    <button type="submit" class="btn btn-outline-primary" name="back">Back</button>
+                </form>
             </div>
         </nav>
 
@@ -164,21 +167,7 @@
                 }
                 else{
                     echo "<script>alert('Registration failed')</script>";
-                }
-            /*if(isset($_POST["Submit"])){
-                $encpass = md5($pass);
-                
-                echo "<h2> Form submission successful!! <h2>";
-                    echo "<h4>Your data is : </h4>";
-                    echo "$name <br>";
-                    echo "$phno <br>";
-                    echo "$pass <br>";
-                    echo "$gender <br>";
-                    echo "$email <br>";
-                    echo "$doj<br><br>";
-                
-            }*/
-                
+                }    
 
             ?>
         </body>

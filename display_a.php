@@ -68,8 +68,10 @@
                 <?php
             
                     require("dbconn.php");
+
+                    //display the list of upcoming appointments
                     echo "<table id='disp'>";
-                    $sel = mysqli_query($connect,"SELECT apt_id,doc_id,fees,pid,date_of_apt FROM appointments");
+                    $sel = mysqli_query($connect,"SELECT apt_id,doc_id,fees,pid,date_of_apt FROM appointments WHERE date_of_apt >= CURDATE()");
                     while($res = mysqli_fetch_array($sel)){
                         echo "<tr><td> ".$res[0]."</td><td>".$res[1]."</td><td>".$res[2]."</td><td>".$res[3]."</td><td>".$res[4]."</td></tr>";
                     }

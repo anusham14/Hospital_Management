@@ -66,11 +66,18 @@
         <?php
 
             require("dbconn.php");
-            //echo "<br><table style='margin-left:26%;'><thead>ID &emsp;&emsp;</thead><thead>Name &emsp;&emsp;&emsp;&emsp;&emsp;</thead><thead>Specialisation &emsp;</thead><thead>Ph No. &emsp;&emsp;&emsp;</thead><thead>Email &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</thead><thead>DOB </thead>";
+            
+            //display the list of doctors & admin can delete it
             echo "<table id='disp'>";
             $sel = mysqli_query($connect,"SELECT id,name,sp,phno,email,gender FROM doctors");
             while($res = mysqli_fetch_array($sel)){
-            echo "<tr><td>".$res[1]."</td><td>".$res[2]."</td><td>".$res[3]."</td><td>".$res[4]."</td><td>".$res[5]."</td></tr>";
+
+                $docid = $res[0];
+                echo "<form method='get'><tr><td>".$res[1]."</td><td>".$res[2]."</td><td>".$res[3]."</td><td>".$res[4]."</td><td>".$res[5]."</td><td><input value='$res[0]' name='id' style='display:none;'></td><td><input type= 'submit' name='dlt' value='delete' class='btn btn-outline-danger'></td></tr></form>";
+                
+                if($_GET['dlt']){
+                    $dlt = mysqli_query($connect,"DELETE FROM doctors WHERE id='$docid'");
+                }
             }
 
             echo "</table>";
